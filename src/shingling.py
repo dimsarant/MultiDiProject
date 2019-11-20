@@ -2,9 +2,10 @@ from functools import reduce
 from hashlib import md5
 from tqdm import tqdm
 from random import randint
+from pprint import pprint
 
 def getHashfunction(num_of_hash_fun, len_of_array):
-    return [lambda x: (randint(32)*x + randint(32)) % len_of_array for _ in num_of_hash_fun]
+    return [lambda x: (randint(0,32)*x + randint(0,32)) % len_of_array for _ in tqdm(range(num_of_hash_fun), "Creating {} hash functions".format(len_of_array))]
 
 def getSinglingMatrix(text_list):
     universe = set()
@@ -46,4 +47,7 @@ if __name__ == "__main__":
     text_list.append(test)
     text_list.append(test_new)
     text_list.append(test_test)
-    print(getSinglingMatrix(text_list))
+    pprint(getSinglingMatrix(text_list))
+
+    for hashf in getHashfunction(100, 500):
+        print(hashf(4))
