@@ -1,5 +1,26 @@
 from functools import reduce
 from hashlib import md5
+from tqdm import tqdm
+from random import randint
+
+def getHashfunction(num_of_hash_fun, len_of_array):
+    return [lambda x: (randint(32)*x + randint(32)) % len_of_array for _ in num_of_hash_fun]
+
+def getSinglingMatrix(text_list):
+    universe = set()
+    for text in tqdm(text_list, "Creating Universe dictionary from each document"):
+        for shingle in shingles(text):
+            universe.add(shingle)
+
+    universe = sorted(universe)
+    # return universe
+    print("Universe of shingles got sorted")
+
+    shingle_array = [[1 if shingle in shingles(doc_text) else 0 for doc_text in text_list] for shingle in tqdm(
+        universe, "Creating Shingling matrix")]
+
+    print("Shingling Matrix just got created for all documents")
+    return shingle_array
 
 
 def shingles(text):
@@ -17,5 +38,12 @@ def get_shingles(text, k):
 
 
 if __name__ == "__main__":
-    test = shingles("dhjsakdhjksladh aaaah hdhh dhisis bb b sbbbbbbbbbbbds")
-    print(test)
+    text_list = []
+    test = "dhjsakdhjksladh aaaah hdhh dhisis bb b sbbbbbbbbbbbds"
+    test_new = "dhjsakdhjksladh aaaah hdhh dhisis bb b sbbbbbbbbbbbds a"
+    test_test = "hfoisahgopsdhgjopsjfops fi[psa fpwirpwisapfi a"
+
+    text_list.append(test)
+    text_list.append(test_new)
+    text_list.append(test_test)
+    print(getSinglingMatrix(text_list))
