@@ -17,9 +17,7 @@ def filter_buckets(signature_matrix):
 def calculate_similarity(total_bucket_list,num_of_docs):
     occurance_matrix = [[0]*num_of_docs for _ in range(num_of_docs)]
     for band in total_bucket_list:
-        print(band)
         for index, bucket in enumerate(band):
-            print(bucket)
             for comb in combinations(bucket, 2):
                 occurance_matrix[comb[0]][comb[1]] += 1
             if index==0:
