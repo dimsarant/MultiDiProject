@@ -1,11 +1,8 @@
 import os
 import sys
-dir_path = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(dir_path+"\\src")
-from lsh import *
-from minhash import *
-from shingling import *
-
+from src.lsh import *
+from src.shingling import *
+from src.minhash import *
 
 
 if __name__ == "__main__":
