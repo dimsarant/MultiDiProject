@@ -3,6 +3,7 @@ import sys
 from src.lsh import *
 from src.shingling import *
 from src.minhash import *
+import numpy as np
 
 
 if __name__ == "__main__":
