@@ -18,9 +18,9 @@ def calculate_similarity(total_bucket_list,num_of_docs):
     occurance_matrix = [[0]*num_of_docs for _ in range(num_of_docs)]
     for band in total_bucket_list:
         for index, bucket in enumerate(band):
-            for comb in combinations(bucket, 2):
-                occurance_matrix[comb[0]][comb[1]] += 1
             if bucket:
+                for comb in combinations(bucket, 2):
+                    occurance_matrix[comb[0]][comb[1]] += 1
                 if index==0:
                     for comb in combinations(sorted(band[index]+band[index+1]), 2):
                         occurance_matrix[comb[0]][comb[1]] += 1
