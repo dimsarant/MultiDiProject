@@ -16,7 +16,7 @@ if __name__ == "__main__":
     text_list.append(test_new)
     text_list.append(test_test)
     similarities=np.array(calculate_similarity(filter_buckets(getSignatures(getSinglingMatrix(text_list), 100)),len(text_list)))
-    probabilities=similarities[np.triu_indices(len(similarities),1)]*10/2
+    probabilities=similarities[np.triu_indices(len(similarities),1)]
     print("\nResults:")
     for index, comb in enumerate(combinations(range(len(text_list)), 2)):
-        print("Texts "+str(comb)+" : similarity = "+str(probabilities[index])+"%")
+        print("Texts "+str(comb)+" : similarity = "+str(probabilities[index]))
