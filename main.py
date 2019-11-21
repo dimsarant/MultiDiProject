@@ -1,19 +1,8 @@
 import os
 import sys
-<<<<<<< HEAD
 from src.lsh import *
 from src.shingling import *
 from src.minhash import *
-=======
-dir_path = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(dir_path+"\\src")
-from lsh import *
-from minhash import *
-from shingling import *
-from itertools import combinations
-import numpy as np
-
->>>>>>> 05f74f696dab297c2cbec6b35d86dd855e28ecfe
 
 
 if __name__ == "__main__":
