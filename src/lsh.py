@@ -11,6 +11,7 @@ def filter_buckets(signature_matrix):
         for doc_idx in range(len(signature_matrix)):
             band_list[abs(hash(tuple(signature_matrix[doc_idx][band:band+5]))) % num_of_buckets].append(doc_idx)
         total_bucket_list.append(band_list)
+    print("Bucket List just got created for each band")
     return total_bucket_list
 
 def calculate_similarity(total_bucket_list,num_of_docs):
